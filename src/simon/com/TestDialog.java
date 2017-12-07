@@ -16,6 +16,8 @@ public class TestDialog extends JDialog {
 
 
     private void assignViews(ArrayList<String> dataList) {
+        setTitle("变量转换");
+        setSize(400, 400);
         jList.setListData(dataList.toArray());
 
         setDefaultLookAndFeelDecorated(true);
@@ -33,22 +35,42 @@ public class TestDialog extends JDialog {
         jList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-
+                System.out.println("changed");
 //                onCancel();
             }
         });
 
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                switch (e.getID()) {
-                    case KeyEvent.VK_ENTER:
-                        onCancel();
-                }
+        jList.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
 
             }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_ENTER:
+                        System.out.println("VK_ENTER");
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+
+        // call onCancel() on ESCAPE
+//        contentPane.registerKeyboardAction(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                switch (e.getID()) {
+//                    case KeyEvent.VK_ENTER:
+//                        onCancel();
+//                }
+//
+//            }
+//        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
