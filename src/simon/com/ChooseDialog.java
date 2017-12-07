@@ -40,7 +40,7 @@ public class ChooseDialog extends JDialog {
             }
         });
 
-        jList.addKeyListener(new KeyListener() {
+        /*jList.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
 
@@ -60,18 +60,14 @@ public class ChooseDialog extends JDialog {
             public void keyReleased(KeyEvent e) {
 
             }
-        });
+        });*/
 
         // call onCancel() on ESCAPE
-//        contentPane.registerKeyboardAction(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                switch (e.getID()) {
-//                    case KeyEvent.VK_ENTER:
-//                        onCancel();
-//                }
-//
-//            }
-//        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
