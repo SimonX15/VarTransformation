@@ -54,8 +54,8 @@ class TransformationAction : AnAction() {
                 wordList.add(uppercaseWords)
                 wordList.add(lowercaseWords)
 
-                /*val chooseDialog = ChooseDialog()
-//                val chooseDialog = ChooseDialog(wordList)
+//                val chooseDialog = ChooseDialog()
+                val chooseDialog = ChooseDialog(wordList)
                 chooseDialog.run {
                     setSize(400, 400)
                     val component = editor.component
@@ -63,7 +63,7 @@ class TransformationAction : AnAction() {
                     setLocationRelativeTo(component)
 //                    location = editor.offsetToXY(10)
                     isVisible = true
-                }*/
+                }
             }
 
         }

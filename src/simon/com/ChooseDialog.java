@@ -6,11 +6,11 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class TestDialog extends JDialog {
+public class ChooseDialog extends JDialog {
     private JPanel contentPane;
     private JList jList;
 
-    public TestDialog(ArrayList<String> dataList) {
+    public ChooseDialog(ArrayList<String> dataList) {
         assignViews(dataList);
     }
 
@@ -50,7 +50,10 @@ public class TestDialog extends JDialog {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_ENTER:
-                        System.out.println("VK_ENTER");
+                        onCancel();
+                        break;
+                    case KeyEvent.VK_CANCEL:
+                        onCancel();
                         break;
                 }
             }
@@ -90,7 +93,7 @@ public class TestDialog extends JDialog {
         dataList.add("测试用3");
         dataList.add("测试用4");
         dataList.add("测试用5");
-        TestDialog dialog = new TestDialog(dataList);
+        ChooseDialog dialog = new ChooseDialog(dataList);
         dialog.setSize(400, 400);
         dialog.pack();
         dialog.setVisible(true);
