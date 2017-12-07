@@ -49,10 +49,8 @@ public class ChooseDialog extends JDialog {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
+                    case KeyEvent.VK_SPACE:
                     case KeyEvent.VK_ENTER:
-                        onCancel();
-                        break;
-                    case KeyEvent.VK_CANCEL:
                         onCancel();
                         break;
                 }

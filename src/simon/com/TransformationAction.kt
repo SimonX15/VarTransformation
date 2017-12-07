@@ -50,6 +50,7 @@ class TransformationAction : AnAction() {
                 val lowercaseWords = selectedText.trim().toLowerCase()
 
                 val wordList: ArrayList<String> = ArrayList()
+                wordList.add(selectedText.trim())
                 wordList.add(humpWords)
                 wordList.add(uppercaseWords)
                 wordList.add(lowercaseWords)
@@ -57,7 +58,7 @@ class TransformationAction : AnAction() {
 //                val chooseDialog = ChooseDialog()
                 val chooseDialog = ChooseDialog(wordList)
                 chooseDialog.run {
-                    setSize(400, 400)
+                    setSize(300, 400)
                     val component = editor.component
                     //FIXME，显示的位置还需要调整
                     setLocationRelativeTo(component)
