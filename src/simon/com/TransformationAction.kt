@@ -3,11 +3,6 @@ package simon.com
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
-import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.ui.Messages
-import com.intellij.psi.PsiFile
-import com.intellij.psi.util.PsiUtilBase
 
 class TransformationAction : AnAction() {
 
@@ -26,7 +21,7 @@ class TransformationAction : AnAction() {
 
             //通过下划线分割，并且下划线不是第一个字符
             if (selectedText!!.contains("_")) {
-                val splitWords = selectedText.split("_")
+                val splitWords = selectedText.trim().split("_")
                 //驼峰
                 var humpWords = ""
                 for (index in 0 until splitWords.size) {
@@ -49,10 +44,26 @@ class TransformationAction : AnAction() {
                 }
 
                 //大写
-                val uppercaseWords = selectedText.toUpperCase()
+                val uppercaseWords = selectedText.trim().toUpperCase()
 
                 //小写
-                val lowercaseWords = selectedText.toLowerCase()
+                val lowercaseWords = selectedText.trim().toLowerCase()
+
+                val wordList: ArrayList<String> = ArrayList()
+                wordList.add(humpWords)
+                wordList.add(uppercaseWords)
+                wordList.add(lowercaseWords)
+
+                /*val chooseDialog = ChooseDialog()
+//                val chooseDialog = ChooseDialog(wordList)
+                chooseDialog.run {
+                    setSize(400, 400)
+                    val component = editor.component
+                    //FIXME，显示的位置还需要调整
+                    setLocationRelativeTo(component)
+//                    location = editor.offsetToXY(10)
+                    isVisible = true
+                }*/
             }
 
         }
