@@ -29,18 +29,14 @@ class TransformationAction : AnAction() {
                     humpWords += if (index == 0) {
                         word
                     } else {
-                        when (word.length) {
-                        //只有一个单词，直接转大写
-                            1 -> {
-                                word.toUpperCase()
-                            }
-                        //超过一个，只转第一个为大写
-                            else -> {
-                                val first2Upper = word[0].toUpperCase()
-                                first2Upper + word.substring(1)
-                            }
-                        }
+                        parseFirstUpper(word)
                     }
+                }
+                //驼峰+m
+                var humpMWords = "m"
+
+                splitWords.forEach {
+                    humpMWords + parseFirstUpper(it)
                 }
 
                 //大写
@@ -52,6 +48,7 @@ class TransformationAction : AnAction() {
                 val wordList: ArrayList<String> = ArrayList()
                 wordList.add(selectedText.trim())
                 wordList.add(humpWords)
+                wordList.add(humpMWords)
                 wordList.add(uppercaseWords)
                 wordList.add(lowercaseWords)
 
@@ -78,5 +75,22 @@ class TransformationAction : AnAction() {
 
         //显示一个对话框
         //        Messages.showMessageDialog("Hello World !", "Information", Messages.getInformationIcon());
+    }
+
+    /**
+     * 把第一个字母转换成大写
+     */
+    private fun parseFirstUpper(word: String): String {
+        return when (word.length) {
+        //只有一个单词，直接转大写
+            1 -> {
+                word.toUpperCase()
+            }
+        //超过一个，只转第一个为大写
+            else -> {
+                val first2Upper = word[0].toUpperCase()
+                first2Upper + word.substring(1)
+            }
+        }
     }
 }

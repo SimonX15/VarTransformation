@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class ChooseDialog extends JDialog {
     private JPanel contentPane;
     private JList jList;
+    private JButton buttonOK;
+    private JButton buttonCancel;
 
     public ChooseDialog(ArrayList<String> dataList) {
         assignViews(dataList);
@@ -24,6 +26,19 @@ public class ChooseDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
 
+        buttonOK.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        });
+
+        buttonCancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        });
+
+
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -35,12 +50,12 @@ public class ChooseDialog extends JDialog {
         jList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                System.out.println("changed");
+//                System.out.println("changed");
 //                onCancel();
             }
         });
 
-        /*jList.addKeyListener(new KeyListener() {
+        jList.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
 
@@ -51,7 +66,7 @@ public class ChooseDialog extends JDialog {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_SPACE:
                     case KeyEvent.VK_ENTER:
-                        onCancel();
+                        onOK();
                         break;
                 }
             }
@@ -60,18 +75,19 @@ public class ChooseDialog extends JDialog {
             public void keyReleased(KeyEvent e) {
 
             }
-        });*/
+        });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+//        contentPane.registerKeyboardAction(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                onCancel();
+//            }
+//        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
-        // add your code here
+
+
         dispose();
     }
 
