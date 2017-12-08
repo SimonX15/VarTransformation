@@ -24,6 +24,7 @@ public class ChooseDialog extends JDialog {
         setTitle("变量转换");
         setSize(400, 400);
         jList.setListData(dataList.toArray());
+        replaceAll.setVisible(false);
 
         setDefaultLookAndFeelDecorated(true);
         setContentPane(contentPane);
@@ -90,7 +91,7 @@ public class ChooseDialog extends JDialog {
     private void onOK() {
         String value = jList.getSelectedValue().toString();
         if (value != null && !value.isEmpty() && chooseListener != null) {
-            chooseListener.onChoosed(value);
+            chooseListener.onChoose(value, replaceAll.isSelected());
         }
         dispose();
     }
@@ -120,6 +121,6 @@ public class ChooseDialog extends JDialog {
     }
 
     public interface ChooseListener {
-        void onChoosed(String words);
+        void onChoose(String words, boolean isReplaceAll);
     }
 }

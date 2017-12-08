@@ -31,16 +31,16 @@ class TransformationAction(name: String?, description: String?, icon: Icon?) : A
 
             val chooseDialog = ChooseDialog(wordList)
             chooseDialog.run {
-                setChooseListener {
-                    if (it.isNullOrEmpty()) {
+                setChooseListener { words, _ ->
+                    if (words.isNullOrEmpty()) {
                         return@setChooseListener
                     }
                     // replace text in editor
                     PluginUtils.executeWriteAction(this@TransformationAction, anActionEvent, Runnable {
                         document.deleteString(selectionStart, selectionEnd)
-                        document.insertString(selectionStart, it)
+                        document.insertString(selectionStart, words)
                         // neuen Text selektieren
-                        selectionModel.setSelection(selectionStart, selectionStart + it.length)
+                        selectionModel.setSelection(selectionStart, selectionStart + words.length)
                     })
                 }
                 setSize(360, 400)
