@@ -1,22 +1,19 @@
 package simon.com
 
-import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import simon.com.util.AbstractPluginAction
 import simon.com.util.PluginUtils
-import sun.plugin.util.PluginSysUtil
 import javax.swing.Icon
 
 class TransformationAction(name: String?, description: String?, icon: Icon?) : AbstractPluginAction(name, description, icon) {
 
     override fun actionPerformed(anActionEvent: AnActionEvent) {
-        val project = anActionEvent.getData(PlatformDataKeys.PROJECT)
         val editor = anActionEvent.getData(PlatformDataKeys.EDITOR)
         //        editor.getSelectionModel().getSelectedText()
 
         //对选中的变量进行处理
-        if (editor != null && project != null) {
+        if (editor != null) {
             //选择的内容
             val selectionModel = editor.selectionModel
             val oldText = selectionModel.selectedText
