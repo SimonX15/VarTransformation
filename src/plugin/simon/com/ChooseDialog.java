@@ -1,4 +1,4 @@
-package simon.com;
+package plugin.simon.com;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

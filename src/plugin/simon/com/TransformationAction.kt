@@ -1,9 +1,9 @@
-package simon.com
+package plugin.simon.com
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
-import simon.com.util.AbstractPluginAction
-import simon.com.util.PluginUtils
+import plugin.simon.com.util.AbstractPluginAction
+import plugin.simon.com.util.PluginUtils
 import javax.swing.Icon
 
 class TransformationAction(name: String?, description: String?, icon: Icon?) : AbstractPluginAction(name, description, icon) {

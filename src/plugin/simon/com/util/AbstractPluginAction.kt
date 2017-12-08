@@ -1,4 +1,4 @@
-package simon.com.util
+package plugin.simon.com.util
 
 import com.intellij.openapi.actionSystem.AnAction
 
