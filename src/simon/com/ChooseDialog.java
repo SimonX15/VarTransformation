@@ -11,6 +11,7 @@ public class ChooseDialog extends JDialog {
     private JList jList;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JCheckBox replaceAll;
 
     public ChooseDialog(ArrayList<String> dataList) {
         assignViews(dataList);

@@ -32,11 +32,6 @@
             <properties/>
             <border type="none"/>
             <children>
-              <hspacer id="dfea3">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
               <component id="e6ef7" class="javax.swing.JButton" binding="buttonOK">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -51,6 +46,14 @@
                 </constraints>
                 <properties>
                   <text value="Cancel"/>
+                </properties>
+              </component>
+              <component id="14238" class="javax.swing.JCheckBox" binding="replaceAll">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="REPLACE ALL"/>
                 </properties>
               </component>
             </children>
