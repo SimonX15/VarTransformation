@@ -13,6 +13,8 @@ public class ChooseDialog extends JDialog {
     private JButton buttonCancel;
     private JCheckBox replaceAll;
 
+    private ChooseListener chooseListener;
+
     public ChooseDialog(ArrayList<String> dataList) {
         assignViews(dataList);
     }
@@ -39,7 +41,6 @@ public class ChooseDialog extends JDialog {
             }
         });
 
-
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -51,7 +52,7 @@ public class ChooseDialog extends JDialog {
         jList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-//                System.out.println("changed");
+//                System.out.println(e.toString());
 //                onCancel();
             }
         });
@@ -87,8 +88,10 @@ public class ChooseDialog extends JDialog {
     }
 
     private void onOK() {
-
-
+        String value = jList.getSelectedValue().toString();
+        if (value != null && !value.isEmpty() && chooseListener != null) {
+            chooseListener.onChoosed(value);
+        }
         dispose();
     }
 
@@ -109,5 +112,14 @@ public class ChooseDialog extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+
+    public void setChooseListener(ChooseListener chooseListener) {
+        this.chooseListener = chooseListener;
+    }
+
+    public interface ChooseListener {
+        void onChoosed(String words);
     }
 }
